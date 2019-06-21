@@ -1,0 +1,16 @@
+[Unit]
+Description=Web walker of HSE LMS course page
+
+[Service]
+Environment="LMS_LOGIN="
+Environment="LMS_PASSWORD="
+
+Type=simple
+Restart=always
+RestartSec=1min
+
+WorkingDirectory=/opt/lms-walker
+ExecStart=/opt/lms-walker/lms_walker.py
+
+[Install]
+WantedBy=multi-user.target
