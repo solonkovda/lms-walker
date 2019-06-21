@@ -1,0 +1,13 @@
+[Unit]
+Description=Telegram notifier of LMS updates
+
+[Service]
+Environment="TELEGRAM_TOKEN="
+Environment="TELEGRAM_CHAT_ID="
+Type=simple
+RestartSec="1min"
+WorkingDirectory="/opt/lms-walker"
+ExecStart="/opt/lms-walker/telegram_notifier.py"
+
+[Install]
+WantedBy=multi-user.target
