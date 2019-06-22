@@ -31,6 +31,9 @@ data = {
 sess.post(_LMS_LOGIN_URL, data=data)
 
 r = sess.get(_LMS_COURSE_URL)
+if r.status_code != 200:
+    exit()
+
 with open(settings.TMP_COURSE_FILE, 'w') as f:
     f.write(postprocess_text(r.text))
 if not os.path.exists(settings.COURSE_FILE) or filecmp.cmp(
